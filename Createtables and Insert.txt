@@ -1,0 +1,264 @@
+create table genre
+(
+  id SERIAL primary key,
+  name_c VARCHAR(200)
+);
+
+
+-- drop table country;
+
+create table country
+(
+  id serial primary key,
+  name VARCHAR(100)
+);
+
+-- drop table movie;
+
+create table movie
+(
+  id serial primary key,
+  name VARCHAR(500),
+  original_name VARCHAR(500),
+  year_i integer,
+  description_c varchar(2000),
+  rate_r real,
+  price_r real
+);
+
+-- drop table movie_genre;
+
+create table movie_genre
+(
+  movie_id integer REFERENCES movie(id),
+  genre_id integer REFERENCES genre(id)
+);
+
+-- drop table movie_country;
+
+create table movie_country
+(
+  movie_id integer REFERENCES movie(id),
+  country_id integer REFERENCES country(id)
+);
+
+-- drop table users;
+
+create table users
+(
+  id serial primary key,
+  name_c VARCHAR(500),
+  email_c VARCHAR(500),
+  password_c VARCHAR(100)
+);
+
+-- drop table review;
+
+create table review
+(
+  id serial primary key,
+  movie_id integer REFERENCES movie(id),
+  user_id integer REFERENCES  users(id),
+  review_c VARCHAR(5000)
+);
+
+-------------------------------
+INSERT INTO users (id, name_c, email_c, password_c) values (1, 'рональд рейнольдс', 'ronald.reynolds66@example.com', 'paco');
+INSERT INTO users (id, name_c, email_c, password_c) values (2, 'дарлин эдвардс', 'darlene.edwards15@example.com', 'bricks');
+INSERT INTO users (id, name_c, email_c, password_c) values (3, 'габриэль джексон', 'gabriel.jackson91@example.com', 'hjkl');
+INSERT INTO users (id, name_c, email_c, password_c) values (4, 'дэрил брайант', 'daryl.bryant94@example.com', 'exodus');
+INSERT INTO users (id, name_c, email_c, password_c) values (5, 'нил паркер', 'neil.parker43@example.com', '878787');
+INSERT INTO users (id, name_c, email_c, password_c) values (6, 'трэвис райт', 'travis.wright36@example.com', 'smart');
+INSERT INTO users (id, name_c, email_c, password_c) values (7, 'амелия кэннеди', 'amelia.kennedy58@example.com', 'beaker');
+INSERT INTO users (id, name_c, email_c, password_c) values (8, 'айда дэвис', 'ida.davis80@example.com', 'pepsi1');
+INSERT INTO users (id, name_c, email_c, password_c) values (9, 'джесси паттерсон', 'jessie.patterson68@example.com', 'tommy');
+INSERT INTO users (id, name_c, email_c, password_c) values (10, 'деннис крейг', 'dennis.craig82@example.com', 'coldbeer');
+INSERT INTO genre (id, name_c) values (1, 'драма');
+INSERT INTO genre (id, name_c) values (2, 'криминал');
+INSERT INTO genre (id, name_c) values (3, 'фэнтези');
+INSERT INTO genre (id, name_c) values (4, 'детектив');
+INSERT INTO genre (id, name_c) values (5, 'мелодрама');
+INSERT INTO genre (id, name_c) values (6, 'биография');
+INSERT INTO genre (id, name_c) values (7, 'комедия');
+INSERT INTO genre (id, name_c) values (8, 'фантастика');
+INSERT INTO genre (id, name_c) values (9, 'боевик');
+INSERT INTO genre (id, name_c) values (10, 'триллер');
+INSERT INTO genre (id, name_c) values (11, 'приключения');
+INSERT INTO genre (id, name_c) values (12, 'аниме');
+INSERT INTO genre (id, name_c) values (13, 'мультфильм');
+INSERT INTO genre (id, name_c) values (14, 'семейный');
+INSERT INTO genre (id, name_c) values (15, 'вестерн');
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (1, 'побег из шоушенка', 'the shawshank redemption', 1994, 'успешный банкир энди дюфрейн обвинен в убийстве собственной жены и ее любовника. оказавшись в тюрьме под названием шоушенк, он сталкивается с жестокостью и беззаконием, царящими по обе стороны решетки. каждый, кто попадает в эти стены, становится их рабом до конца жизни. но энди, вооруженный живым умом и доброй душой, отказывается мириться с приговором судьбы и начинает разрабатывать невероятно дерзкий план своего освобождения.', 8.9, 123.45);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (2, 'зеленая миля', 'the green mile', 1999, 'обвиненный в страшном преступлении, джон коффи оказывается в блоке смертников тюрьмы «холодная гора». вновь прибывший обладал поразительным ростом и был пугающе спокоен, что, впрочем, никак не влияло на отношение к нему начальника блока пола эджкомба, привыкшего исполнять приговор.', 8.9, 134.67);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (3, 'форрест гамп', 'forrest gump', 1994, 'от лица главного героя форреста гампа, слабоумного безобидного человека с благородным и открытым сердцем, рассказывается история его необыкновенной жизни.фантастическим образом превращается он в известного футболиста, героя войны, преуспевающего бизнесмена. он становится миллиардером, но остается таким же бесхитростным, глупым и добрым. форреста ждет постоянный успех во всем, а он любит девочку, с которой дружил в детстве, но взаимность приходит слишком поздно.', 8.6, 200.60);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (4, 'список шиндлера', 'schindler"s list', 1993, 'фильм рассказывает реальную историю загадочного оскара шиндлера, члена нацистской партии, преуспевающего фабриканта, спасшего во время второй мировой войны почти 1200 евреев.', 8.7, 150.50);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (5, '1+1', 'intouchables', 2011, 'пострадав в результате несчастного случая, богатый аристократ филипп нанимает в помощники человека, который менее всего подходит для этой работы, — молодого жителя предместья дрисса, только что освободившегося из тюрьмы. несмотря на то, что филипп прикован к инвалидному креслу, дриссу удается привнести в размеренную жизнь аристократа дух приключений.', 8.3, 120.00);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (6, 'начало', 'inception', 2010, 'кобб — талантливый вор, лучший из лучших в опасном искусстве извлечения: он крадет ценные секреты из глубин подсознания во время сна, когда человеческий разум наиболее уязвим. редкие способности кобба сделали его ценным игроком в привычном к предательству мире промышленного шпионажа, но они же превратили его в извечного беглеца и лишили всего, что он когда-либо любил. ', 8.6, 130.00);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (7, 'жизнь прекрасна', 'la vita e bella', 1997, 'во время ii мировой войны в италии в концлагерь были отправлены евреи, отец и его маленький сын. жена, итальянка, добровольно последовала вслед за ними. в лагере отец сказал сыну, что все происходящее вокруг является очень большой игрой за приз в настоящий танк, который достанется тому мальчику, который сможет не попасться на глаза надзирателям. он сделал все, чтобы сын поверил в игру и остался жив, прячась в бараке.', 8.2, 145.99);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (8, 'бойцовский клуб', 'fight club', 1999, 'терзаемый хронической бессонницей и отчаянно пытающийся вырваться из мучительно скучной жизни, клерк встречает некоего тайлера дардена, харизматического торговца мылом с извращенной философией. тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное, ради чего стоит жить.', 8.4, 119.99);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (9, 'звёздные войны: эпизод 4 – новая надежда', 'star wars', 1977, 'татуин. планета-пустыня. уже постаревший рыцарь джедай оби ван кеноби спасает молодого люка скайуокера, когда тот пытается отыскать пропавшего дроида. с этого момента люк осознает свое истинное назначение: он один из рыцарей джедай. в то время как гражданская война охватила галактику, а войска повстанцев ведут бои против сил злого императора, к люку и оби вану присоединяется отчаянный пилот-наемник хан соло, и в сопровождении двух дроидов, r2d2 и c-3po, этот необычный отряд отправляется на поиски предводителя повстанцев — принцессы леи. героям предстоит отчаянная схватка с устрашающим дартом вейдером — правой рукой императора и его секретным оружием — «звездой смерти».', 8.1, 198.98);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (10, 'звёздные войны: эпизод 5 – империя наносит ответный удар', 'star wars: episode v - the empire strikes back', 1980, 'борьба за галактику обостряется в пятом эпизоде космической саги. войска императора начинают массированную атаку на повстанцев и их союзников. хан соло и принцесса лейя укрываются в заоблачном городе, в котором их и захватывает дарт вейдер, в то время как люк скайуокер находится на таинственной планете джунглей дагоба. там мастер — джедай йода обучает молодого рыцаря навыкам обретения силы. люк даже не предполагает, как скоро ему придется воспользоваться знаниями старого мастера: впереди битва с превосходящими силами императора и смертельный поединок с дартом вейдером.', 8.2, 198.98);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (11, 'унесённые призраками', 'sen to chihiro no kamikakushi', 2001, 'маленькая тихиро вместе с мамой и папой переезжают в новый дом. заблудившись по дороге, они оказываются в странном пустынном городе, где их ждет великолепный пир. родители с жадностью набрасываются на еду и к ужасу девочки превращаются в свиней, став пленниками злой колдуньи юбабы, властительницы таинственного мира древних богов и могущественных духов. ', 8.6, 145.90);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (12, 'титаник', 'titanic', 1997, 'молодые влюбленные джек и роза находят друг друга в первом и последнем плавании «непотопляемого» титаника. они не могли знать, что шикарный лайнер столкнется с айсбергом в холодных водах северной атлантики, и их страстная любовь превратится в схватку со смертью…', 7.9, 150.00);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (13, 'пролетая над гнездом кукушки', 'one flew over the cuckoo"s nest', 1975, 'сымитировав помешательство в надежде избежать тюремного заключения, рэндл патрик макмерфи попадает в психиатрическую клинику, где почти безраздельным хозяином является жестокосердная сестра милдред рэтчед. макмерфи поражается тому, что прочие пациенты смирились с существующим положением вещей, а некоторые — даже сознательно пришли в лечебницу, прячась от пугающего внешнего мира. и решается на бунт. в одиночку.', 8.7, 180.00);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (14, 'ходячий замок', 'hauru no ugoku shiro', 2004, 'злая ведьма заточила 18-летнюю софи в тело старухи. в поисках того, кто поможет ей вернуться к своему облику, софи знакомится с могущественным волшебником хаулом и его демоном кальцифером. кальцифер должен служить хаулу по договору, условия которого он не может разглашать. девушка и демон решают помочь друг другу избавиться от злых чар…', 8.2, 130.50);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (15, 'гладиатор', 'gladiator', 2000, 'в великой римской империи не было военачальника, равного генералу максимусу. непобедимые легионы, которыми командовал этот благородный воин, боготворили его и могли последовать за ним даже в ад. но случилось так, что отважный максимус, готовый сразиться с любым противником в честном бою, оказался бессилен против вероломных придворных интриг. генерала предали и приговорили к смерти. чудом избежав гибели, максимус становится гладиатором.', 8.6, 175.00);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (16, 'большой куш', 'snatch.', 2000, 'четырехпалый френки должен был переправить краденый алмаз из англии в сша своему боссу эви. но вместо этого герой попадает в эпицентр больших неприятностей. сделав ставку на подпольном боксерском поединке, френки попадает в круговорот весьма нежелательных событий. вокруг героя и его груза разворачивается сложная интрига с участием множества колоритных персонажей лондонского дна — русского гангстера, троих незадачливых грабителей, хитрого боксера и угрюмого громилы грозного мафиози. каждый норовит в одиночку сорвать большой куш.', 8.5, 160.00);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (17, 'темный рыцарь', 'the dark knight', 2008, 'бэтмен поднимает ставки в войне с криминалом. с помощью лейтенанта джима гордона и прокурора харви дента он намерен очистить улицы от преступности, отравляющей город. сотрудничество оказывается эффективным, но скоро они обнаружат себя посреди хаоса, развязанного восходящим криминальным гением, известным испуганным горожанам под именем джокер.', 8.5, 199.99);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (18, 'как приручить дракона', 'how to train your dragon', 2010, 'вы узнаете историю подростка иккинга, которому не слишком близки традиции его героического племени, много лет ведущего войну с драконами. мир иккинга переворачивается с ног на голову, когда он неожиданно встречает дракона беззубика, который поможет ему и другим викингам увидеть привычный мир с совершенно другой стороны…', 8.2, 182.00);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (19, 'молчание ягнят', 'the silence of the lambs', 1990, 'психопат похищает и убивает молодых женщин по всему среднему западу америки. фбр, уверенное в том, что все преступления совершены одним и тем же человеком, поручает агенту клариссе старлинг встретиться с заключенным-маньяком, который мог бы объяснить следствию психологические мотивы серийного убийцы и тем самым вывести на его след. ', 8.3, 150.50);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (20, 'гран торино', 'gran torino', 2008, 'вышедший на пенсию автомеханик уолт ковальски проводит дни, починяя что-то по дому, попивая пиво и раз в месяц заходя к парикмахеру. и хотя последним желанием его недавно почившей жены было совершение им исповеди, уолту — ожесточившемуся ветерану корейской войны, всегда держащему свою винтовку наготове, — признаваться в общем-то не в чем. да и нет того, кому он доверял бы в той полной мере, в какой доверяет своей собаке дейзи.', 8.1, 100.50);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (21, 'хороший, плохой, злой', 'il buono, il brutto, il cattivo', 1966, 'в разгар гражданской войны таинственный стрелок скитается по просторам дикого запада. у него нет ни дома, ни друзей, ни компаньонов, пока он не встречает двоих незнакомцев, таких же безжалостных и циничных. по воле судьбы трое мужчин вынуждены объединить свои усилия в поисках украденного золота. но совместная работа — не самое подходящее занятие для таких отъявленных бандитов, как они. компаньоны вскоре понимают, что в их дерзком и опасном путешествии по разоренной войной стране самое важное — никому не доверять и держать пистолет наготове, если хочешь остаться в живых.', 8.5, 130.00);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (22, 'укрощение строптивого', 'il bisbetico domato', 1980, 'категорически не приемлющий женского общества грубоватый фермер вполне счастлив и доволен своей холостяцкой жизнью. но неожиданно появившаяся в его жизни героиня пытается изменить его взгляды на жизнь и очаровать его. что же из этого получится…', 7.7, 120.00);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (23, 'блеф', 'bluff storia di truffe e di imbroglioni', 1976, 'белль дюк имеет старые счеты с филиппом бэнгом, который отбывает свой срок за решёткой. для того чтобы поквитаться с филиппом, белль дюк вступает в сговор с другим аферистом по имени феликс, чтобы тот организовал побег филиппа бенга из тюрьмы. побег удаётся, но парочка заодно обманывает и белль дюк, исчезнув прямо из-под её носа. выясняется, что и филипп бэнг, в свою очередь, не прочь отомстить белль дюк. для этого он задумывает грандиозную мистификацию, сродни покерному блефу…', 7.6, 100.00);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (24, 'джанго освобожденный', 'django unchained', 2012, 'эксцентричный охотник за головами, также известный как «дантист», промышляет отстрелом самых опасных преступников. работенка пыльная, и без надежного помощника ему не обойтись. но как найти такого и желательно не очень дорогого? беглый раб по имени джанго — прекрасная кандидатура. правда, у нового помощника свои мотивы — кое с чем надо разобраться…', 8.5, 170.00);
+INSERT INTO movie (id, name, original_name, year_i, description_c, rate_r, price_r) values (25, 'танцующий с волками', 'dances with wolves', 1990, 'действие фильма происходит в сша во времена гражданской войны. лейтенант американской армии джон данбар после ранения в бою просит перевести его на новое место службы ближе к западной границе сша. место его службы отдалённый маленький форт. непосредственный его командир покончил жизнь самоубийством, а попутчик данбара погиб в стычке с индейцами после того, как довез героя до места назначения. людей, знающих, что данбар остался один в форте и должен выжить в условиях суровой природы, и в соседстве с кажущимися негостеприимными коренными обитателями северной америки, просто не осталось. казалось, он покинут всеми. постепенно лейтенант осваивается, он ведет записи в дневнике…', 8.00, 120.55);
+INSERT INTO country (id, name) values (1, 'сша');
+INSERT INTO country (id, name) values (2, 'франция');
+INSERT INTO country (id, name) values (3, 'великобритания');
+INSERT INTO country (id, name) values (4, 'италия');
+INSERT INTO country (id, name) values (5, 'германия');
+INSERT INTO country (id, name) values (6, 'япония');
+INSERT INTO country (id, name) values (7, 'испания');
+INSERT INTO movie_country (movie_id, country_id) values (1, 1);
+INSERT INTO movie_country (movie_id, country_id) values (2, 1);
+INSERT INTO movie_country (movie_id, country_id) values (3, 1);
+INSERT INTO movie_country (movie_id, country_id) values (4, 1);
+INSERT INTO movie_country (movie_id, country_id) values (5, 2);
+INSERT INTO movie_country (movie_id, country_id) values (6, 1);
+INSERT INTO movie_country (movie_id, country_id) values (6, 3);
+INSERT INTO movie_country (movie_id, country_id) values (7, 4);
+INSERT INTO movie_country (movie_id, country_id) values (8, 1);
+INSERT INTO movie_country (movie_id, country_id) values (8, 5);
+INSERT INTO movie_country (movie_id, country_id) values (9, 1);
+INSERT INTO movie_country (movie_id, country_id) values (10, 1);
+INSERT INTO movie_country (movie_id, country_id) values (11, 6);
+INSERT INTO movie_country (movie_id, country_id) values (12, 1);
+INSERT INTO movie_country (movie_id, country_id) values (13, 1);
+INSERT INTO movie_country (movie_id, country_id) values (14, 6);
+INSERT INTO movie_country (movie_id, country_id) values (15, 1);
+INSERT INTO movie_country (movie_id, country_id) values (15, 3);
+INSERT INTO movie_country (movie_id, country_id) values (16, 3);
+INSERT INTO movie_country (movie_id, country_id) values (16, 1);
+INSERT INTO movie_country (movie_id, country_id) values (17, 1);
+INSERT INTO movie_country (movie_id, country_id) values (17, 3);
+INSERT INTO movie_country (movie_id, country_id) values (18, 1);
+INSERT INTO movie_country (movie_id, country_id) values (19, 1);
+INSERT INTO movie_country (movie_id, country_id) values (20, 1);
+INSERT INTO movie_country (movie_id, country_id) values (20, 5);
+INSERT INTO movie_country (movie_id, country_id) values (21, 4);
+INSERT INTO movie_country (movie_id, country_id) values (21, 7);
+INSERT INTO movie_country (movie_id, country_id) values (21, 5);
+INSERT INTO movie_country (movie_id, country_id) values (21, 1);
+INSERT INTO movie_country (movie_id, country_id) values (22, 4);
+INSERT INTO movie_country (movie_id, country_id) values (23, 4);
+INSERT INTO movie_country (movie_id, country_id) values (24, 1);
+INSERT INTO movie_country (movie_id, country_id) values (25, 1);
+INSERT INTO movie_country (movie_id, country_id) values (25, 3);
+INSERT INTO review (id, movie_id, user_id, review_c) values (1, 1, 2, 'гениальное кино! смотришь и думаешь «так не бывает!», но позже понимаешь, что только так и должно быть. начинаешь заново осмысливать значение фразы, которую постоянно используешь в своей жизни, «надежда умирает последней». ведь если ты не надеешься, то все в твоей жизни гаснет, не остается смысла. фильм наполнен бесконечным числом правильных афоризмов. я уверена, что буду пересматривать его сотни раз.');
+INSERT INTO review (id, movie_id, user_id, review_c) values (2, 1, 3, 'кино это является, безусловно, «со знаком качества». что же до первого места в рейтинге, то, думаю, здесь имело место быть выставление «десяточек» от большинства зрителей вкупе с раздутыми восторженными откликами кинокритиков. фильм атмосферный. он драматичный. и, конечно, заслуживает того, чтобы находиться довольно высоко в мировом кинематографе. ');
+INSERT INTO review (id, movie_id, user_id, review_c) values (3, 2, 1, 'перестал удивляться тому, что этот фильм занимает сплошь первые места во всевозможных кино рейтингах. особенно я люблю когда при экранизации литературного произведение из него в силу специфики кинематографа исчезает ирония и появляется некий сверхреализм, обязанный удерживать зрителя у экрана каждую отдельно взятую секунду. ');
+INSERT INTO review (id, movie_id, user_id, review_c) values (4, 3, 5, 'много еще можно сказать об этом шедевре. и то, что он учит верить, и то, чтобы никогда не сдаваться… но самый главный девиз я увидел вот в этой фразе: «занимайся жизнью, или занимайся смертью».');
+INSERT INTO review (id, movie_id, user_id, review_c) values (5, 4, 6, 'очень хороший фильм, необычный сюжет, я бы даже сказала непредсказуемый. такие фильмы уже стали редкостью.');
+INSERT INTO review (id, movie_id, user_id, review_c) values (6, 5, 9, 'у меня не найдётся слов, чтобы описать этот фильм. не хочется быть банальной и говорить какой он отличный, непредсказуемый и т. д., но от этого никуда не деться к сожалению — ведь он шедевральный!');
+INSERT INTO review (id, movie_id, user_id, review_c) values (7, 5, 7, 'скажу сразу — фильм выглядел многообещающе, даже если не брать в расчет что он находился в топе-250 лучших фильмов. известные голливудские актеры на главных ролях. но нет в этом фильме должной атмосферы. нет такого чувства что вот сейчас случится что-то страшное. что герои попали в ситуацию из которой не смогут выбраться. в общем, не понравилось.');
+INSERT INTO review (id, movie_id, user_id, review_c) values (8, 7, 3, '«все должно быть супер! супер! су-пер!» и это именно супер, ну слов других не подберешь.');
+INSERT INTO review (id, movie_id, user_id, review_c) values (9, 8, 10, 'фильм очень красивый. не во всем, конечно, но яркие персонажи и костюмы — это уже кое-что. ');
+INSERT INTO review (id, movie_id, user_id, review_c) values (10, 18, 3, 'этот фильм из разряда тех, что могут обеспечить хороший отдых и приподнятое настроение за счёт своей лёгкости, совсем непошлого юмора, умеренной дозы напряжения, динамики нужных скоростей.');
+INSERT INTO review (id, movie_id, user_id, review_c) values (11, 18, 5, 'назначается киношедевром среди развлекательных фильмов.');
+INSERT INTO review (id, movie_id, user_id, review_c) values (12, 15, 7, 'данный кинофильм — нестареющая классика мирового кинематографа, который можно пересматривать до бесконечности и, что удивительно, он не может надоесть.');
+INSERT INTO review (id, movie_id, user_id, review_c) values (13, 17, 4, 'рекомендую смотреть всем и не обращать внимания на надоевшее уже спасение целого мира одним человеком.');
+INSERT INTO review (id, movie_id, user_id, review_c) values (14, 16, 4, 'удивлен. никто не отозвался плохо? неужели было создано произведение искусства, которое нравится всем, и которое совершенно? нет. может, я один такой? фильм не вызывает во мне никаких эмоций. неплохая сказочка. замечательная наивная атмосфера. местами есть забавные шутки. и, как мне показалось, этот фильм — своего рода стёб над другими боевиками. при этом превосходящий многие боевики.');
+INSERT INTO review (id, movie_id, user_id, review_c) values (15, 11, 10, 'необыкновенно позитивный фильм. его можно пересматривать много раз для поднятия настроения, находя много смешных, незаметных на первый взгляд моментов.');
+INSERT INTO review (id, movie_id, user_id, review_c) values (16, 9, 7, 'легендарный. культовый. бессмертный. три слова. всего лишь три. а сколько же они выражают неподдельных эмоций и радостных впечатлений по отношению к очередному любимому и уважаемому фильму из минувшего в лету детства? много. слишком много. и описать эти сердечные и гарцующие в здравом рассудке чувства обыкновенными строчными предложениями иногда не представляется возможным. ');
+INSERT INTO review (id, movie_id, user_id, review_c) values (17, 16, 6, 'приятного просмотра для всех, кто не видел ещё этого шедевра больше впечатлений для тех, кто пересматривает в надцатый раз. =) ');
+INSERT INTO review (id, movie_id, user_id, review_c) values (18, 16, 5, 'это один из любимых моих фильмов с самого детства. я видела его столько раз, что знаю практически наизусть. и могу сказать с уверенностью, что посмотрю еще не один раз. ');
+INSERT INTO review (id, movie_id, user_id, review_c) values (19, 19, 3, 'фильм, безусловно, посмотрела уже большая часть населения, которая хоть каким-то образом имеет отношение к кинематографу. я считаю, что фильм можно пересмотреть еще не один раз.');
+INSERT INTO review (id, movie_id, user_id, review_c) values (20, 18, 8, 'фильм продуман до мельчайших деталей. идеальный фильм для улучшения настроения, единственный в своем роде. обязателен к просмотру!');
+INSERT INTO review (id, movie_id, user_id, review_c) values (21, 23, 5, 'фильм потрясающий, в нем хватает абсолютно всего: и драк, и музыки, и юмора, и любви. ');
+INSERT INTO review (id, movie_id, user_id, review_c) values (22, 20, 1, 'у фильма есть свои мелкие недостатки  и неточности, но многочисленные достоинства в несколько раз перевешивают. много вдохновляющего креатива!');
+INSERT INTO review (id, movie_id, user_id, review_c) values (23, 19, 2, 'хоть и не по возрасту мне заводить скрипучую пластинку с мелодией «раньше и деревья были выше, и трава зеленее…», а хочется. выражать свою любовь к настолько близкому произведению крайне сложно.');
+INSERT INTO review (id, movie_id, user_id, review_c) values (24, 23, 8, 'вердикт: прекрасная, нестареющая классика, которая рекомендована мною для всех.');
+INSERT INTO review (id, movie_id, user_id, review_c) values (25, 21, 4, 'для воскресного вечернего просмотра подходит по всем критериям.');
+INSERT INTO review (id, movie_id, user_id, review_c) values (26, 22, 5, 'хороший и по-настоящему интересный фильм, с хорошим сюжетом и неплохим музыкальным сопровождением. всем советую к просмотру.');
+INSERT INTO review (id, movie_id, user_id, review_c) values (27, 24, 6, 'полагаю, этот фильм должен быть в коллекции каждого уважающего себя киномана. ');
+INSERT INTO review (id, movie_id, user_id, review_c) values (28, 25, 7, 'нетленный шедевр мирового кинематографа, который можно пересматривать десятки раз и получать все такой — же, извините за выражение, кайф от просмотра. минусы у фильма, конечно, есть, но черт возьми. их просто не хочется замечать! ты настолько поглощен просмотром фильма, что просто не хочется придираться к разным мелочам. ');
+INSERT INTO review (id, movie_id, user_id, review_c) values (29, 24, 8, 'фильм только выигрывает от частого просмотра и всегда поднимает мне настроение (наряду с драмой, тут еще и тонкий юмор). ');
+INSERT INTO review (id, movie_id, user_id, review_c) values (30, 22, 9, 'конечно, бесспорно культовый фильм, не реалистичный, наивный, где то глупый, но такой же увлекательный и удивительный, как и много лет назад');
+INSERT INTO review (id, movie_id, user_id, review_c) values (31, 12, 9, 'в итоге мы имеем отличный представитель своего жанра, который прошёл проверку временем и до сих пор отлично смотрится, несмотря на классический сюжет');
+INSERT INTO review (id, movie_id, user_id, review_c) values (32, 13, 10, 'скажу только одно — как я жалею, что не посмотрела его раньше! ');
+INSERT INTO movie_genre (movie_id, genre_id) values (1, 1);
+INSERT INTO movie_genre (movie_id, genre_id) values (1, 2);
+INSERT INTO movie_genre (movie_id, genre_id) values (2, 3);
+INSERT INTO movie_genre (movie_id, genre_id) values (2, 1);
+INSERT INTO movie_genre (movie_id, genre_id) values (2, 2);
+INSERT INTO movie_genre (movie_id, genre_id) values (2, 4);
+INSERT INTO movie_genre (movie_id, genre_id) values (3, 1);
+INSERT INTO movie_genre (movie_id, genre_id) values (3, 5);
+INSERT INTO movie_genre (movie_id, genre_id) values (4, 1);
+INSERT INTO movie_genre (movie_id, genre_id) values (4, 6);
+INSERT INTO movie_genre (movie_id, genre_id) values (5, 1);
+INSERT INTO movie_genre (movie_id, genre_id) values (5, 7);
+INSERT INTO movie_genre (movie_id, genre_id) values (5, 6);
+INSERT INTO movie_genre (movie_id, genre_id) values (6, 8);
+INSERT INTO movie_genre (movie_id, genre_id) values (6, 9);
+INSERT INTO movie_genre (movie_id, genre_id) values (6, 10);
+INSERT INTO movie_genre (movie_id, genre_id) values (6, 1);
+INSERT INTO movie_genre (movie_id, genre_id) values (6, 4);
+INSERT INTO movie_genre (movie_id, genre_id) values (7, 1);
+INSERT INTO movie_genre (movie_id, genre_id) values (7, 5);
+INSERT INTO movie_genre (movie_id, genre_id) values (7, 7);
+INSERT INTO movie_genre (movie_id, genre_id) values (8, 10);
+INSERT INTO movie_genre (movie_id, genre_id) values (8, 1);
+INSERT INTO movie_genre (movie_id, genre_id) values (8, 2);
+INSERT INTO movie_genre (movie_id, genre_id) values (9, 8);
+INSERT INTO movie_genre (movie_id, genre_id) values (9, 3);
+INSERT INTO movie_genre (movie_id, genre_id) values (9, 9);
+INSERT INTO movie_genre (movie_id, genre_id) values (9, 11);
+INSERT INTO movie_genre (movie_id, genre_id) values (10, 8);
+INSERT INTO movie_genre (movie_id, genre_id) values (10, 3);
+INSERT INTO movie_genre (movie_id, genre_id) values (10, 9);
+INSERT INTO movie_genre (movie_id, genre_id) values (10, 11);
+INSERT INTO movie_genre (movie_id, genre_id) values (11, 12);
+INSERT INTO movie_genre (movie_id, genre_id) values (11, 13);
+INSERT INTO movie_genre (movie_id, genre_id) values (11, 3);
+INSERT INTO movie_genre (movie_id, genre_id) values (11, 11);
+INSERT INTO movie_genre (movie_id, genre_id) values (11, 14);
+INSERT INTO movie_genre (movie_id, genre_id) values (12, 1);
+INSERT INTO movie_genre (movie_id, genre_id) values (12, 5);
+INSERT INTO movie_genre (movie_id, genre_id) values (13, 1);
+INSERT INTO movie_genre (movie_id, genre_id) values (14, 12);
+INSERT INTO movie_genre (movie_id, genre_id) values (14, 13);
+INSERT INTO movie_genre (movie_id, genre_id) values (14, 3);
+INSERT INTO movie_genre (movie_id, genre_id) values (14, 11);
+INSERT INTO movie_genre (movie_id, genre_id) values (15, 9);
+INSERT INTO movie_genre (movie_id, genre_id) values (15, 1);
+INSERT INTO movie_genre (movie_id, genre_id) values (16, 2);
+INSERT INTO movie_genre (movie_id, genre_id) values (16, 7);
+INSERT INTO movie_genre (movie_id, genre_id) values (17, 8);
+INSERT INTO movie_genre (movie_id, genre_id) values (17, 9);
+INSERT INTO movie_genre (movie_id, genre_id) values (17, 10);
+INSERT INTO movie_genre (movie_id, genre_id) values (17, 2);
+INSERT INTO movie_genre (movie_id, genre_id) values (17, 1);
+INSERT INTO movie_genre (movie_id, genre_id) values (18, 13);
+INSERT INTO movie_genre (movie_id, genre_id) values (18, 3);
+INSERT INTO movie_genre (movie_id, genre_id) values (18, 7);
+INSERT INTO movie_genre (movie_id, genre_id) values (18, 11);
+INSERT INTO movie_genre (movie_id, genre_id) values (18, 14);
+INSERT INTO movie_genre (movie_id, genre_id) values (19, 10);
+INSERT INTO movie_genre (movie_id, genre_id) values (19, 2);
+INSERT INTO movie_genre (movie_id, genre_id) values (19, 4);
+INSERT INTO movie_genre (movie_id, genre_id) values (19, 1);
+INSERT INTO movie_genre (movie_id, genre_id) values (20, 1);
+INSERT INTO movie_genre (movie_id, genre_id) values (21, 15);
+INSERT INTO movie_genre (movie_id, genre_id) values (22, 7);
+INSERT INTO movie_genre (movie_id, genre_id) values (23, 7);
+INSERT INTO movie_genre (movie_id, genre_id) values (23, 2);
+INSERT INTO movie_genre (movie_id, genre_id) values (24, 1);
+INSERT INTO movie_genre (movie_id, genre_id) values (24, 15);
+INSERT INTO movie_genre (movie_id, genre_id) values (24, 11);
+INSERT INTO movie_genre (movie_id, genre_id) values (24, 7);
+INSERT INTO movie_genre (movie_id, genre_id) values (25, 1);
+INSERT INTO movie_genre (movie_id, genre_id) values (25, 11);
+INSERT INTO movie_genre (movie_id, genre_id) values (25, 15);
+
